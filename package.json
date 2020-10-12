@@ -19,7 +19,8 @@
   },
   "homepage": "https://github.com/nic-ball/node-express-course#readme",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "nodemon": "^2.0.4"
   },
   "devDependencies": {
     "eslint": "^7.11.0",

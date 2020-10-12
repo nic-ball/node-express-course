@@ -23,6 +23,15 @@ app.get('/users/:id', function (req, res) {
   });
 });
 
+app.get('/users/:id/profile', function (req, res) {
+  console.log(req.params.id);
+  res.json({
+    success: true,
+    message: 'profile returned',
+    user: req.params.id,
+  });
+});
+
 app.post('/login', function (req, res) {
   // For production passwords to be encrypted maybe using bcrypt before sending to the database
   const username = req.body.username;

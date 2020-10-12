@@ -4,52 +4,49 @@ const bodyParser = require('body-parser');
 
 app.use(bodyParser.json());
 
-const mockUserData = [
-  {name: 'Mark'},
-  {name: 'Jill'}
-]
+const mockUserData = [{ name: 'Mark' }, { name: 'Jill' }];
 
-app.get('/users', function(req, res) {
+app.get('/users', function (req, res) {
   res.json({
     success: true,
     message: 'successfully got users. Nice!',
-    users: mockUserData
-  })
-})
+    users: mockUserData,
+  });
+});
 
-app.get('/users/:id', function(req, res) {
-  console.log(req.params.id)
+app.get('/users/:id', function (req, res) {
+  console.log(req.params.id);
   res.json({
     success: true,
     message: 'got one user',
-    user: req.params.id
-  })
-})
+    user: req.params.id,
+  });
+});
 
-app.post('/login', function(req, res) {
+app.post('/login', function (req, res) {
   // For production passwords to be encrypted maybe using bcrypt before sending to the database
   const username = req.body.username;
   const password = req.body.password;
 
   // Mocking for now but should come from the database
-  const mockUsername = "billyTheKid";
-  const mockPassword = "superSecret";
+  const mockUsername = 'billyTheKid';
+  const mockPassword = 'superSecret';
 
   if (username === mockUsername && password === mockPassword) {
     // Will need to implement a JSON web token sign method here to make an encrypted token
     res.json({
       success: true,
       message: 'password and username match!',
-      token: 'encrypted token goes here'
-    })
+      token: 'encrypted token goes here',
+    });
   } else {
-      res.json({
-        success: false,
-        message: 'password and username do not match'
-      })
-    }
-  })
+    res.json({
+      success: false,
+      message: 'password and username do not match',
+    });
+  }
+});
 
-app.listen(8000,function() {
-  console.log("server is running")
-})
+app.listen(8000, function () {
+  console.log('server is running');
+});
